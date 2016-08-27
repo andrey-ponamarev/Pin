@@ -17,8 +17,13 @@
   "author": "Jean-Pierre Sierens",
   "license": "MIT",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "google-map-react": "^0.18.2",
+    "hammerjs": "^2.0.8",
     "react": "^15.0.2",
+    "react-bootstrap": "^0.30.2",
     "react-dom": "^15.0.2",
+    "react-hammerjs": "^0.5.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",

@@ -1,18 +1,44 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import Menu from './Menu';
+import Header from './Header';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { toggleMenu } from '../actions';
 
-const App = ({ children }) =>
-    <div>
-        <h1>Filter table</h1>
-        { children }
-        <footer>
-            <Link to="/">Filterable Table</Link>
-            <Link to="/about">About</Link>
-        </footer>
-    </div>;
+let App = ({children, menuState, toggle}) => {
+    return (
+        <div>
+            <Menu isHide={menuState}
+                  overlayOnClick={toggle}/>
+            <Header toggle={toggle}
+                    isHide={menuState}/>
+
+            { children }
+        </div>
+    );
+};
 
 App.propTypes = {
-    children: PropTypes.object
+    all: PropTypes.any,
+    page: PropTypes.any,
+    children: PropTypes.object,
+    menuState: PropTypes.bool,
+    toggle: PropTypes.func
 };
+
+const mapStateToProps = (state) => {
+    return {
+        menuState: state.menu,
+        all: state
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggle: bindActionCreators(toggleMenu, dispatch)
+    };
+};
+
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

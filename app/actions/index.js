@@ -1,8 +1,7 @@
 import * as types from './types';
 
-export function filterTable(filter) {
+export function toggleMenu() {
     return {
-        type: types.FILTER,
-        filter
+        type: types.TOGGLE_MENU,
     };
 }
