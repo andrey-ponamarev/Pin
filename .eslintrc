@@ -6,6 +6,7 @@
     "mocha": true
   },
   "globals": {
+    "google": true,
     "expect": true,
     "sinon": true,
     "__DEV__": true

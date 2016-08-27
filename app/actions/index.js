@@ -1,7 +1,12 @@
 import * as types from './types';
 
-export function toggleMenu() {
+export function setPin({ lat, lng }) {
     return {
-        type: types.TOGGLE_MENU,
+        type: types.SET_PIN,
+        pin: {
+            lat,
+            lng,
+            title: 'ABS'
+        }
     };
 }
