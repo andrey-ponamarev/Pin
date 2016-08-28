@@ -8,7 +8,7 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../app/reducers';
-import App from '../app/containers/App';
+import App from '../app/containers/Root';
 import { renderToString } from 'react-dom/server';
 
 const app = express();
