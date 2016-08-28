@@ -11,8 +11,7 @@ import Root from './containers/Root';
  * Import styles
  */
 import './styles/index.scss';
-const preloadedState = window.__PRELOADED_STATE__;
-const store = configureStore(preloadedState);
+const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
