@@ -4,7 +4,7 @@
   "description": "Build teams of any kind",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "node ./server/webpackDevServer",
     "server": "node ./server",
     "build": "rimraf dist && node_modules/.bin/webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
@@ -22,6 +22,7 @@
     "bootstrap-sass": "^3.3.7",
     "cookie-parser": "^1.4.3",
     "google-map-react": "^0.18.2",
+    "google-maps-react": "^1.0.18",
     "hammerjs": "^2.0.8",
     "instagram-node": "^0.5.8",
     "react": "^15.0.2",

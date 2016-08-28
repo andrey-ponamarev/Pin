@@ -2,16 +2,23 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setMapCenter } from '../actions/index';
+import GoogleApiComponent from 'google-maps-react/dist/GoogleApiComponent';
+const API_KEY = 'AIzaSyAxZvDsukjQ29R1Rp41D40pMdUU04U75pE';
 
 class SearchBox extends Component {
     constructor(props) {
         super(props);
         this.onPlacesChanged = this.onPlacesChanged.bind(this);
     }
-    componentDidMount() {
-        const input = this.refs.search;
-        this.searchBox = new google.maps.places.SearchBox(input);
-        this.searchBox.addListener('places_changed', this.onPlacesChanged);
+    componentWillReceiveProps(nextProps) {
+        if(this.props.google) {
+            return;
+        }
+        if(nextProps.google) {
+            const input = this.refs.search;
+            this.searchBox = new nextProps.google.maps.places.SearchBox(input);
+            this.searchBox.addListener('places_changed', this.onPlacesChanged);
+        }
     }
     componentWillUnmount() {
         this.searchBox.removeListener('places_changed', this.onPlacesChanged);
@@ -22,14 +29,20 @@ class SearchBox extends Component {
         this.props.setMapCenter(place.geometry.location.lat(), place.geometry.location.lng());
     }
     render() {
-        return <input id="search-input" className="form-control" ref="search" type="text"/>;
+        console.log('search-box', this.props.google);
+        return (
+            <div>
+                <input id="search-input" className="form-control" ref="search" type="text"/>
+            </div>
+        );
     }
 }
 
 SearchBox.propTypes = {
     placeholder: PropTypes.string,
     onPlacesChanged: PropTypes.func,
-    setMapCenter: PropTypes.func
+    setMapCenter: PropTypes.func,
+    google: PropTypes.any
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -40,4 +53,6 @@ const mapDispatchToProps = (dispatch) => {
 
 SearchBox = connect(null, mapDispatchToProps)(SearchBox);
 
-export default SearchBox;
+export default GoogleApiComponent({
+    apiKey: API_KEY
+})(SearchBox);
