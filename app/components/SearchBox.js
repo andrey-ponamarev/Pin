@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setMapCenter } from '../actions/index';
 
 class SearchBox extends Component {
     constructor(props) {
@@ -15,19 +18,26 @@ class SearchBox extends Component {
     }
 
     onPlacesChanged() {
-        console.log(this.searchBox.getPlaces());
-        if (this.props.onPlacesChanged) {
-            this.props.onPlacesChanged(this.searchBox.getPlaces());
-        }
+        const place = this.searchBox.getPlaces()[0];
+        this.props.setMapCenter(place.geometry.location.lat(), place.geometry.location.lng());
     }
     render() {
-        return <input ref="search" {...this.props} type="text"/>;
+        return <input id="search-input" className="form-control" ref="search" type="text"/>;
     }
 }
 
 SearchBox.propTypes = {
     placeholder: PropTypes.string,
-    onPlacesChanged: PropTypes.func
+    onPlacesChanged: PropTypes.func,
+    setMapCenter: PropTypes.func
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setMapCenter: bindActionCreators(setMapCenter, dispatch)
+    };
+};
+
+SearchBox = connect(null, mapDispatchToProps)(SearchBox);
 
 export default SearchBox;
