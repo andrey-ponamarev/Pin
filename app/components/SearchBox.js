@@ -27,6 +27,7 @@ class SearchBox extends Component {
     onPlacesChanged() {
         const place = this.searchBox.getPlaces()[0];
         this.props.setMapCenter(place.geometry.location.lat(), place.geometry.location.lng());
+        this.props.google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
     }
     render() {
         console.log('search-box', this.props.google);
