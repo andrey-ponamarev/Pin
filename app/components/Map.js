@@ -1,25 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import { Map } from 'google-maps-react';
-import GoogleApiComponent from 'google-maps-react/dist/GoogleApiComponent';
+import React, {PropTypes, Component} from 'react';
+import GoogleMap from 'google-map-react';
+import Pin from './Pin';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setPin } from '../actions/index';
 
 const API_KEY = 'AIzaSyAxZvDsukjQ29R1Rp41D40pMdUU04U75pE';
 
-export class Container extends Component {
+class Map extends Component {
     constructor(props) {
         super(props);
         this.setPin = this.setPin.bind(this);
-        this.onReady = this.onReady.bind(this);
-        this.loadMap = this.loadMap.bind(this);
     }
     setPin(event) {
         console.log('action: ', event);
         this.props.setPin(event);
-    }
-    loadMap() {
-        console.log('LoadMap');
     }
     onGoogleApiLoaded() {
         console.log('onGoogleApiLoaded');
@@ -27,39 +22,35 @@ export class Container extends Component {
     onChange() {
         console.log('onChange', arguments);
     }
-    onReady() {
-        const {google} = this.props;
-        console.log(google);
-    }
     render() {
-        console.log(this.props.center);
-
+        console.log('render map');
         return (
             <div id="map-container">
-                <Map google={this.props.google}
-                     loadMap={this.loadMap}
-                     onReady={this.onReady}
-                     onClick={this.setPin}
-                     initialCenter={this.props.center}
-                     zoom={this.props.zoom}/>
+                <GoogleMap
+                    onClick={this.setPin}
+                    onGoogleApiLoaded={({map, maps}) => console.log(map, maps)}
+                    bootstrapURLKeys={{
+                        key: API_KEY,
+                        language: 'ru'}}
+                    center={this.props.mapView.center}
+                    zoom={this.props.mapView.zoom}>
+                    {this.props.pins.map((pin, index) => <Pin key={index} lat={pin.lat} lng={pin.lng} text={pin.title} /> )}
+                </GoogleMap>
             </div>
         );
     }
 }
 
-Container.propTypes = {
-    google: PropTypes.any,
+Map.propTypes = {
     pins: PropTypes.array,
-    center: PropTypes.any,
-    zoom: PropTypes.any,
+    mapView: PropTypes.any,
     setPin: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
     return {
         pins: state.map.pins,
-        zoom: state.map.mapView.zoom,
-        center: state.map.mapView.center
+        mapView: state.map.mapView
     };
 };
 
@@ -69,7 +60,8 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-Container = connect(mapStateToProps, mapDispatchToProps)(Container);
+Map = connect(mapStateToProps, mapDispatchToProps)(Map);
+
 export default GoogleApiComponent({
     apiKey: API_KEY
-})(Container);
+})(Map);
