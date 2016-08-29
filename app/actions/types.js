@@ -1,4 +1,2 @@
-export const TOGGLE_MENU = 'TOGGLE_MENU';
-export const CHAT_OPEN = 'CHAT_OPEN';
-export const CHAT_CLOSE = 'CHAT_CLOSE';
-export const CHAT_COLLAPSE = 'CHAT_COLLAPSE';
+export const MAP_SET_PIN = 'MAP_SET_PIN';
+export const MAP_POSITION = 'MAP_POSITION';

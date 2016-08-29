@@ -1,11 +1,9 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import chat from './chat';
-import menu from './menu';
+import map from './map';
 
 const rootReducer = combineReducers({
-    chat,
-    menu,
+    map,
     routing
 });
 
