@@ -103,20 +103,3 @@ jspm_packages
 ### Git ###
 *.orig
 .idea/
-app/Pint.js
-app/components/Chat.js
-app/components/Header.js
-app/components/ListPage.js
-app/components/Modal.js
-app/components/Page.js
-app/components/PageWithChat.js
-app/main.js
-app/map.js
-app/pages/
-app/reducers/chat.js
-app/reducers/menu.js
-app/styles/index.scss
-app/styles/layout/
-app/styles/modal/
-app/styles/pages/
-app/styles/themes/

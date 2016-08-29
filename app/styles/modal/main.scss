@@ -1,0 +1,54 @@
+@import '../themes/colors.scss';
+
+@mixin modalHide($side){
+  transition: $side 500ms;
+
+  &.dh-modal-hide {
+    #{$side}: -100%;
+  }
+}
+
+.position-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dh-modal {
+  overflow: scroll;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &.dh-modal-left {
+    @include modalHide(left);
+  }
+
+  &.dh-modal-top {
+    @include modalHide(top);
+  }
+
+  &.dh-modal-right {
+    @include modalHide(right);
+  }
+
+  &.dh-modal-bottom {
+      @include modalHide(bottom);
+  }
+
+  .dh-modal-content {
+    @extend .position-absolute;
+    z-index: 10;
+  }
+
+  .dh-modal-overlay {
+    @extend .position-absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba($main-color, .7);
+  }
+  @import "nav";
+}
