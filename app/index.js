@@ -15,9 +15,10 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
-    <AppContainer>
-        <Root store={store} history={history} />
-    </AppContainer>,
+    //  <AppContainer>
+    <Root store={store} history={history}/>
+    //  </AppContainer>
+    ,
     document.getElementById('root')
 );
 
@@ -26,7 +27,7 @@ if (module.hot) {
         const NewRoot = require('./containers/Root').default;
         render(
             <AppContainer>
-                <NewRoot store={store} history={history} />
+                <NewRoot store={store} history={history}/>
             </AppContainer>,
             document.getElementById('root')
         );
