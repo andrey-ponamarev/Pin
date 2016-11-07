@@ -103,3 +103,7 @@ jspm_packages
 ### Git ###
 *.orig
 .idea/
+server/controllers/apis.js
+server/express.js
+server/server-api.js
+uploads/

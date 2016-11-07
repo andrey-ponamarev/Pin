@@ -15,10 +15,7 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
-    //  <AppContainer>
-    <Root store={store} history={history}/>
-    //  </AppContainer>
-    ,
+    <Root store={store} history={history}/>,
     document.getElementById('root')
 );
 

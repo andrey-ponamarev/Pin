@@ -9,13 +9,7 @@ import UploadImage from 'react-dropzone-component';
 const componentConfig = {
     iconFiletypes: ['.jpg', '.png', '.gif'],
     showFiletypeIcon: true,
-    postUrl: '/uploadHandler'
-};
-
-const eventHandlers = {
-    addedfile: (file) => {
-        console.log(file);
-    }
+    postUrl: '/api'
 };
 
 class Search extends Component {
@@ -26,11 +20,18 @@ class Search extends Component {
     }
     onSubmit(event) {
         event.preventDefault();
-        console.log('onSubmit', this.props.pinPosition);
+        //  console.log('onSubmit', this.props.pinPosition);
         this.props.setPin(this.props.pinPosition);
     }
     onDropImage(file) {
         console.log(file);
+    }
+    eventHandlers() {
+        return {
+            addedfile: (file) => {
+                console.log(file);
+            }
+        };
     }
     render() {
         return (
@@ -42,7 +43,7 @@ class Search extends Component {
                     <FormControl type="text" placeholder="Title"/>
                 </FormGroup>
                 <UploadImage config={componentConfig}
-                             eventHandlers = {eventHandlers}/>
+                             eventHandlers = {this.eventHandlers}/>
                 <Button type="submit" bsStyle="success">Submit</Button>
             </form>
         );

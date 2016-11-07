@@ -70,6 +70,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 Container = connect(mapStateToProps, mapDispatchToProps)(Container);
+
 export default GoogleApiComponent({
     apiKey: API_KEY
 })(Container);

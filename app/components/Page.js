@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import Map from './Map';
-import Results from './Results';
+// import Results from './Results';
+import Gallery from './Gallery';
+//  import Map from './Map';
 import { connect } from 'react-redux';
 
 class Page extends Component {
@@ -11,10 +12,7 @@ class Page extends Component {
                 <Col xs={8} md={8}>
                     <Row>
                         <Col xs={6} md={6}>
-                            <Map/>
-                        </Col>
-                        <Col xs={6} md={6}>
-                            <Results/>
+                            <Gallery/>
                         </Col>
                     </Row>
                 </Col>
