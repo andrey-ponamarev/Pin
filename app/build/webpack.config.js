@@ -10,17 +10,17 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        path.join(__dirname, 'app/index.js')
+        path.join(__dirname, 'app/src/index.js')
     ],
     output: {
-        path: path.join(__dirname, '/server/static'),
+        path: path.join(__dirname, '/dist/static'),
         filename: 'js/bundle.js',
         publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: 'templates/index.tpl.html',
-          favicon: 'templates/favicon.ico',
+          template: 'app/templates/index.tpl.html',
+          favicon: 'app/templates/favicon.ico',
           title: 'Rhythm',
           inject: 'body',
           filename: 'index.html'

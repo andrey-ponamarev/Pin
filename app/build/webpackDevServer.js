@@ -1,6 +1,8 @@
-var config = require('./../webpack.config.js');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config.js');
 
-module.exports = {
+new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true,
@@ -18,5 +20,17 @@ module.exports = {
       timings: false,
       chunks: false,
       chunkModules: false
+    },
+    proxy: {
+        '/api': {
+            target: 'http://localhost:8080',
+            secure: false
+        }
     }
-};
+}).listen(3000, 'localhost', function (err) {
+    if (err) {
+        console.log(err);
+    }
+
+  console.log('Listening at localhost:3000');
+});
