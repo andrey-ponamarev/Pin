@@ -4,7 +4,7 @@
   "description": "Build teams of any kind",
   "main": "index.js",
   "scripts": {
-    "db": "node ./server/app",
+    "start": "nodemon ./app/index.js",
     "test": "node ./server/webpackDevServer",
     "server": "nodemon ./server/server-api",
     "build": "rm -rf server/static && webpack",

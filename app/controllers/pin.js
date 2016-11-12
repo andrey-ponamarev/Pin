@@ -1,8 +1,8 @@
 import Pin from '../models/Pin';
 
 export const getPins = (req, res) => {
-    Pin.find(function(err, pins) {
-        if(err){
+    Pin.find((err, pins) => {
+        if (err) {
             res.error('error');
         }
 
@@ -11,13 +11,28 @@ export const getPins = (req, res) => {
 };
 
 export const setPin = (req, res) => {
-    let newPin = new Pin({title: 'title'});
+    let newPin = new Pin(req.body);
 
-    newPin.save(function(err, done){
-        if(err){
+    newPin.save((err, done) => {
+        if (err) {
             res.error('error');
         }
 
         res.send(done);
     });
+};
+
+export const deletePin = (req, res) => {
+    Pin.findOneAndRemove(
+        {
+            _id: req.params.id
+        },
+        (err, done) => {
+            if (err) {
+                res.error('error');
+            }
+
+            res.send(done);
+        }
+    );
 };
