@@ -10,10 +10,10 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        path.join(__dirname, 'app/src/index.js')
+        path.join(__dirname, '../src/index.js')
     ],
     output: {
-        path: path.join(__dirname, '/dist/static'),
+        path: path.join(__dirname, 'public/dist/static'),
         filename: 'js/bundle.js',
         publicPath: '/'
     },
@@ -38,13 +38,13 @@ module.exports = {
         failOnError: true
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint'
-            }
-        ],
+        // preLoaders: [
+        //     {
+        //         test: /\.js$/,
+        //         exclude: /node_modules/,
+        //         loader: 'eslint'
+        //     }
+        // ],
         loaders: [
             {
                 test: /\.js?$/,

@@ -9,5 +9,8 @@ export default {
         production: "mongodb://localhost:27017/pins",
         development: "mongodb://localhost:27017/pins",
         test: "mongodb://localhost:27017/pins",
+    },
+    server: {
+        port: 8080
     }
 };

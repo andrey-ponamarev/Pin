@@ -8,7 +8,7 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../app/reducers';
-import App from '../app/components/Pin.js';
+import App from '../app/components/Posts.js';
 import webpack from 'webpack';
 import { renderToString } from 'react-dom/server';
 import webpackDevMiddleware from 'webpack-dev-middleware';

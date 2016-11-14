@@ -3,6 +3,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config.js');
 
 new WebpackDevServer(webpack(config), {
+    headers: { "Access-Control-Allow-Origin": "*" },
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true,
@@ -21,12 +22,11 @@ new WebpackDevServer(webpack(config), {
       chunks: false,
       chunkModules: false
     },
-    proxy: {
-        '/api': {
-            target: 'http://localhost:8080',
-            secure: false
-        }
-    }
+
+    contentBase: './app/src/',
+    // proxy: {
+    //     "**": "http://localhost:8080"
+    // },
 }).listen(3000, 'localhost', function (err) {
     if (err) {
         console.log(err);

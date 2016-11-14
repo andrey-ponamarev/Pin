@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
-import SearchBox from './SearchBox';
+import SearchBox from './map/SearchBox';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setPin } from '../actions/index';

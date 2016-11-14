@@ -1,7 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router';
-import App from './containers/App';
+import BasePage from './pages/BasePage';
+import PostPage from './pages/PostPage';
+
 
 export default (
-    <Route path="/" component={App} />
+    <Route path="/" component={BasePage}>
+        <Route path="post-page" component={PostPage}/>
+    </Route>
 );

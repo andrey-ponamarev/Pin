@@ -1,4 +1,5 @@
 require('babel-register')({});
 var app = require('./app');
+var config = require('./config');
 
-app.listen(3000);
+app.listen(config.server.port);
