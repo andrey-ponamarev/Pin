@@ -18,7 +18,7 @@ class PostSchema extends mongoose.Schema {
             },
             img: {
                 type: String,
-                default: './images/IMG_4129.jpg'
+                default: '/images/IMG_4129.jpg'
             },
             postdate: {
                 type: Date,

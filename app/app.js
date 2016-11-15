@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import config from './config';
-import { getPosts, setPost, deletePost } from './controllers/posts';
+import { getPosts, setPost, deletePost, getPostById } from './controllers/posts';
 
 const db = mongoose.connect(config.db.development);
 const app = express();
@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/api/posts', getPosts);
+app.get('/api/posts/:id', getPostById);
 app.post('/api/posts', setPost);
 app.delete('/api/posts/:id', deletePost);
 

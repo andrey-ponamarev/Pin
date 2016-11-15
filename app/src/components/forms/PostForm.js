@@ -5,7 +5,6 @@ import { Field } from 'redux-form';
 
 class PostForm extends Component {
     componentWillMount() {
-        console.log(this.props);
         this.props.resetMe();
     }
 

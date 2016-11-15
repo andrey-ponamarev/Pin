@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -19,14 +20,12 @@ const styles = {
 
 class GridListExampleSimple extends Component {
     componentWillMount() {
-        console.log(this.props);
         this.props.fetchPosts();
     }
 
     render() {
         const { posts, loading, error } = this.props.postsList;
 
-        console.log(posts);
         if(loading) {
             return <div className="container"><h1>Posts</h1><h3>Loading...</h3></div>
         } else if(error) {
@@ -38,18 +37,17 @@ class GridListExampleSimple extends Component {
                 <GridList
                     cellHeight={180}
                     style={styles.gridList}
-                    cols={3}
-                >
+                    cols={3}>
                     <Subheader>Ahn</Subheader>
-
                     {posts.map((post, index) => (
                         <GridTile
                             key={index}
                             title={post.title}
                             subtitle={<span>by <b>{post.author}</b></span>}
-                            actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
-                        >
-                            <img src={post.img}/>
+                            actionIcon={<IconButton><StarBorder color="white"/></IconButton>}>
+                            <Link to={"/posts/" + post._id}>
+                                <img src={post.img}/>
+                            </Link>
                         </GridTile>
                     ))}
                 </GridList>
@@ -57,6 +55,5 @@ class GridListExampleSimple extends Component {
         );
     }
 }
-;
 
 export default GridListExampleSimple;

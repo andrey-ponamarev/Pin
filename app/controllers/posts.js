@@ -10,6 +10,20 @@ export const getPosts = (req, res) => {
     });
 };
 
+export const getPostById = (req, res) => {
+    Post.findOne({
+            _id: req.params.id
+        },
+        (err, post) => {
+            if (err) {
+                res.error('error');
+            }
+
+            res.json(post);
+        }
+    );
+};
+
 export const setPost = (req, res) => {
     let newPost = new Post(req.body);
 
