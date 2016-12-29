@@ -107,3 +107,4 @@ server/controllers/apis.js
 server/express.js
 server/server-api.js
 uploads/
+client/images/

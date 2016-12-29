@@ -1,15 +1,11 @@
 {
-  "name": "teambuilder",
+  "name": "travel-app",
   "version": "1.0.0",
-  "description": "Build teams of any kind",
-  "main": "index.js",
+  "description": "Travel application",
   "scripts": {
-    "dev:fe": "node app/build/webpackDevServer.js",
-    "dev:be": "nodemon ./app/index.js",
-    "test": "node ./server/webpackDevServer",
-    "server": "nodemon ./server/server-api",
-    "build": "rm -rf server/static && webpack",
-    "eslint": "eslint ."
+    "client:dev": "node client/build/webpackDevServer.js",
+    "server:dev": "nodemon server/index.js",
+    "build": "rm -rf server/static && webpack"
   },
   "keywords": [
     "es6",
@@ -23,7 +19,9 @@
     "bluebird": "^3.4.3",
     "body-parser": "^1.15.2",
     "bootstrap-sass": "^3.3.7",
+    "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
+    "flexboxgrid": "^6.3.1",
     "google-map-react": "^0.18.2",
     "google-maps-react": "^1.0.18",
     "hammerjs": "^2.0.8",
@@ -37,6 +35,7 @@
     "react-dom": "^15.0.2",
     "react-dropzone": "^3.5.3",
     "react-dropzone-component": "^1.0.4",
+    "react-flexbox-grid": "^0.10.2",
     "react-hammerjs": "^0.5.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-redux": "^4.4.5",
