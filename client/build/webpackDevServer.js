@@ -23,7 +23,7 @@ new WebpackDevServer(webpack(config), {
       chunkModules: false
     },
 
-    contentBase: './app/src/',
+    contentBase: './client/src/',
     // proxy: {
     //     "**": "http://localhost:8080"
     // },

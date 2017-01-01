@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers';
+import rootReducer from '../data';
 import DevTools from '../containers/DevTools';
 import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Nav from '../components/commons/Navigation';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Map from '../components/map/Map';
-import SearchBox from '../components/map/SearchBox';
+import { FaSpinner } from 'react-google-maps';
+import _ from 'lodash';
+
+import Nav from '../components/commons/Navigation';
+import MapContainer from '../containers/maps/MapContainer';
 
 class BasePage extends Component {
     render() {
@@ -11,10 +13,11 @@ class BasePage extends Component {
                 <Nav/>
                 <Row>
                     <Col xs={6} md={6}>
-                        <Map/>
-                        <SearchBox/>
+                        <MapContainer/>
                     </Col>
-                    <Col xs={6} md={6}>{this.props.children}</Col>
+                    <Col xs={6} md={6}>
+                        {this.props.children}
+                    </Col>
                 </Row>
             </Grid>
         );

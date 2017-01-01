@@ -3,6 +3,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui'
 import { Field } from 'redux-form';
 
+import AutocompleteContainer from '../../containers/maps/AutocompleteContainer';
+
 class PostForm extends Component {
     componentWillMount() {
         this.props.resetMe();
@@ -12,6 +14,7 @@ class PostForm extends Component {
         const { handleSubmit, createPost } = this.props;
         return (
             <form onSubmit={handleSubmit(createPost.bind(this))}>
+                <AutocompleteContainer/>
                 <Field
                     name="title"
                     component={TextField}
