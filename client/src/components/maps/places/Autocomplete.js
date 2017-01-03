@@ -6,8 +6,8 @@ const INPUT_STYLE = {
     border: `1px solid transparent`,
     width: `100%`,
     height: `32px`,
-    marginTop: `27px`,
-    padding: `0 12px`,
+    margin: `10px 0`,
+    padding: `0 15px`,
     borderRadius: `1px`,
     boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
     fontSize: `14px`,
@@ -44,10 +44,18 @@ class AutoComplete extends Component {
         autocomplete.addListener('place_changed', () => {
             const place = autocomplete.getPlace();
 
+
+            if(!place.geometry){
+                return;
+            }
+
+            console.log(autocomplete.getBounds());
+
             onPlacesChanged({
                 position: {
                     lat: place.geometry.location.lat(),
-                    lng: place.geometry.location.lng()
+                    lng: place.geometry.location.lng(),
+                    animation: google.maps.Animation.DROP
                 }
             });
 

@@ -14,9 +14,7 @@ const GoogleMap = ({googleMap, markers, ...restProps }) => {
                     <Marker
                         key={key}
                         map={googleMap}
-                        MarkerOptions={marker}>
-                        Test
-                    </Marker>)
+                        MarkerOptions={marker}/>)
             }) : null
             }
         </Map>

@@ -1,6 +1,13 @@
 import { default as React, PropTypes, Component, cloneElement} from 'react';
+import ReactDOM from 'react-dom';
 
 class Marker extends Component {
+    destroyMarker = this.destroyMarker.bind(this);
+
+    destroyMarker(){
+        React.unmountComponentAtNode(ReactDOM.findDOMNode(this).parentNode);
+    }
+
     constructor(props) {
         super(props);
 
@@ -16,13 +23,18 @@ class Marker extends Component {
             marker
         };
     }
+
     componentWillReceiveProps(nextProps){
         const { map, MarkerOptions } = nextProps;
         const { marker } = this.state;
 
         console.log('marker componentWillReceiveProps', MarkerOptions);
+        if(!MarkerOptions){
+            return this.destroyMarker();
+        }
+
+        map.panTo(MarkerOptions.position);
         this.state.marker.setPosition(MarkerOptions.position);
-        map.panTo(marker.getPosition());
     }
 
     componentWillUpdate(){
