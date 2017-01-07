@@ -4,8 +4,8 @@
   "description": "Travel application",
   "scripts": {
     "client:dev": "node client/build/webpackDevServer.js",
-    "server:dev": "nodemon server/index.js",
-    "build": "rm -rf server/static && webpack"
+    "server:dev": "nodemon server.js",
+    "build": "rm -rf server/public && webpack --config client/build/webpack.config.dev.js"
   },
   "keywords": [
     "es6",

@@ -12,13 +12,13 @@ module.exports = {
         }
     },
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        'react-hot-loader/patch',
+        //'webpack-dev-server/client?http://localhost:3000',
+        //'webpack/hot/only-dev-server',
+        //'react-hot-loader/patch',
         path.join(__dirname, '../src/app.js')
     ],
     output: {
-        path: path.join(__dirname, 'public/'),
+        path: path.join(__dirname, '../../public/'),
         filename: 'js/bundle.js',
         publicPath: '/'
     },
