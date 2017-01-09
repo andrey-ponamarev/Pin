@@ -16,9 +16,8 @@ app.use(express.static('public'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
 app.use(accessControlAllow);
 app.use('/', routes);
 
-app.listen(config.server.port, ()=>{
-    console.log(`server start on port: ${config.server.port}`);
-});
+app.listen(config.server.port, () => console.log(`server start on port: ${config.server.port}`));

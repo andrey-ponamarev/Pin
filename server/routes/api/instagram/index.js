@@ -44,9 +44,39 @@ const user_self_media_recent = (req, res) => {
         });
 };
 
+const user_self_liked = (req, res) => {
+    console.log(req.cookies);
+    api.use({access_token: req.cookies.instaToken || '1338234654.4452438.aa84477c7c2e4022a1dc03196053e3f9'});
+
+    return api.user_self_likedAsync({count: 20})
+        .then((medias, pagination, remaining, limit) => {
+            //console.log('err', medias, pagination, remaining, limit);
+
+            res.json(filterPhotos(medias));
+        });
+};
+
 instagramRouter
     .get('/authorize_user', authorize_user)
     .get('/handleauth', handleauth)
+    .get('/user_self_liked', user_self_liked)
     .get('/user_self_media_recent', user_self_media_recent);
 
 export default instagramRouter;
+
+function filterPhotos(medias) {
+    console.log(medias.length);
+
+    return medias
+        .filter(media => (media.location && media.type === 'image'))
+        .reduce((state, media) => {
+            const { location, images } = media;
+
+            state.push({
+                location,
+                src: images.standard_resolution.url
+            });
+
+            return state;
+        }, []);
+}

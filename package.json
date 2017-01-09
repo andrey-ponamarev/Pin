@@ -7,12 +7,7 @@
     "server:dev": "nodemon server.js",
     "build": "rm -rf server/public && webpack --config client/build/webpack.config.dev.js"
   },
-  "keywords": [
-    "es6",
-    "react",
-    "redux"
-  ],
-  "author": "Jean-Pierre Sierens",
+  "author": "Andrii Ponamarov",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.2",
@@ -31,6 +26,7 @@
     "material-ui": "^0.16.1",
     "mongoose": "^4.6.6",
     "multer": "^1.2.0",
+    "node-fetch": "^1.6.3",
     "react": "^15.0.2",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.0.2",

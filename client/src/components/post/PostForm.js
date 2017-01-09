@@ -4,8 +4,9 @@ import { TextField } from 'redux-form-material-ui'
 import { Field } from 'redux-form';
 import Dropzone from 'react-dropzone';
 import AutocompleteContainer from '../../containers/maps/AutocompleteContainer';
-import FileUploadIcon from 'material-ui/svg-icons/file/file-upload';
+import FileUploadIcon from '../../../../node_modules/material-ui/svg-icons/file/file-upload';
 import Paper from 'material-ui/Paper';
+import Nav from './Nav';
 
 class PostForm extends Component {
     onDrop = this.onDrop.bind(this);
@@ -25,6 +26,8 @@ class PostForm extends Component {
     render() {
         const { handleSubmit, createPost } = this.props;
         return (
+            <div>
+                <Nav/>
             <form onSubmit={handleSubmit(createPost.bind(this))}>
                 <AutocompleteContainer/>
                 <Paper>
@@ -65,6 +68,7 @@ class PostForm extends Component {
                     type="submit"
                     primary={true}/>
             </form>
+            </div>
         );
     }
 }
